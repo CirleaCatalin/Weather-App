@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    --fontcolor: #313131;
+    --bgcolor: #FAFAFA; 
+}   
+html {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bgcolor);
+    margin: 0;
+    color: var(--fontcolor);
+    transition: background-color 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+body.night {
+    --bgcolor: #212121;
+    --fontcolor: #FAFAFA;
+}
+
+.container {
+  max-width: 85vw;
+  margin: 0 auto;
+}
+
+
+header {
+    display: flex;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    align-items: center;
+    justify-content: space-between;
+    /* box-shadow: 0 2px 4px 0 rgba(0,0,0,.1) */
+}
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+
+  .search.error{
+    margin-top:43px
+  }
+  
+  .searchTerm {
+    width: 100%;
+    border: 3px solid black;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+  }
+
+
+  .error {
+    font-size: 11px;
+    text-align: center;
+    margin-top: 5px;
+    color: #FF9494;
+    font-weight: bold;
+    height: 37px;
+}
+
+    
+  .searchTerm.not-found {
+    border: 3px solid red;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+  ::placeholder {
+    color: var(--c, gray);
+  }
+
+  .addButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid black;
+    background: black;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 6px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .content {
+    margin-bottom: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: minmax(250px, 1fr);
+    grid-gap: 25px;
+}
+
+.widget {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    position: relative;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: background-color 50ms;
+    background: linear-gradient(130deg, rgba(25,118,210,1) 0%, rgba(63,81,181,1) 100%);
+    box-shadow: 5px 5px 18px -1px rgb(0 0 0 / 34%);
+    border-radius: 5px;
+    transition: all 1s;
+}
+.remove{
+    position: absolute;
+    top: 5px;
+    right: 12px;
+    font-size: 22px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+/* ############ style for the cards and style for the content inside */
+.prevision{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    height: 315px;
+}
+.prevision .box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loading-img{
+  width: 30px;
+  height: 30px;
+}
+
+.prevision .box img {
+    display: inline-block;
+    width: 80%;
+    height: 80%;
+    margin-bottom: -26px;
+    margin-top: 7px;
+}
+.min-max-temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    gap: 50px;
+  }
+.content .widget .prevision h3{
+    font-size: 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: 500;
+}
+.content .widget .prevision .box h1{
+    margin-top: 0px;
+    margin-bottom: -4px;
+}
+.content .widget .prevision .box h2{
+    margin-top: 0px;
+    margin-bottom: 0px; 
+}
+.content .widget .prevision .box p {
+    margin-top: 0px;
+    margin-bottom: 12px;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: none;
+    background: linear-gradient(130deg, rgba(25,118,210,1) 0%, rgba(63,81,181,1) 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3rem 5rem rgb(0 0 0 / 30%);
+    z-index: 10;
+}
+
+.modal.on {
+    display: block;
+}
+.modal-js-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+}
+.modal-js-close {
+    position: absolute;
+    background: black;
+    color: white;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    padding: 3px;
+    top: -15px;
+    right: -25px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+
+hr {
+    opacity: 50%;
+    width: 60%;
+  }
+
+
+
+  @keyframes append-animate {
+	from {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+.widget{
+	animation: append-animate .3s linear;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px;
+        box-shadow: none;
+    }
+    h1{
+        font-size: 1em;
+    }
+}
